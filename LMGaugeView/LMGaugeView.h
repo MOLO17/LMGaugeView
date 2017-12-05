@@ -14,6 +14,12 @@ IB_DESIGNABLE
 @interface LMGaugeView : UIView
 
 /*!
+ *  The number formatter used to format the value. It's configured to always
+ *  show the leading zero and 4 fraction digits: 0,0021
+ */
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
+
+/*!
  *  Current value.
  */
 @property (nonatomic, assign) CGFloat value;

@@ -93,6 +93,13 @@
     _limitValue = kDefaultLimitValue;
     _numOfDivisions = kDefaultNumOfDivisions;
     _numOfSubDivisions = kDefaultNumOfSubDivisions;
+
+    // Value formatter with default settings
+    _numberFormatter = [[NSNumberFormatter alloc] init];
+    _numberFormatter.alwaysShowsDecimalSeparator = YES;
+    _numberFormatter.minimumIntegerDigits = 1;
+    _numberFormatter.minimumFractionDigits = 4;
+    _numberFormatter.maximumFractionDigits = 4;
     
     // Ring
     _ringThickness = kDefaultRingThickness;
@@ -360,7 +367,7 @@
     /*!
      *  Set text for value label
      */
-    self.valueLabel.text = [NSString stringWithFormat:@"%0.f", _value];
+    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(_value)];
 
     /*!
      *  Trigger the stoke animation of ring layer.
