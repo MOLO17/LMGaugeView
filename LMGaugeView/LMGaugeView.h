@@ -20,6 +20,13 @@ IB_DESIGNABLE
 @property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 
 /*!
+ *  The number formatter used to format the min/max values. It's configured as
+ *  the main numberFormatter to always show the leading zero and 4 fraction
+ *  digits: 0,0021
+ */
+@property (nonatomic, strong) NSNumberFormatter *minMaxumberFormatter;
+
+/*!
  *  Current value.
  */
 @property (nonatomic, assign) CGFloat value;

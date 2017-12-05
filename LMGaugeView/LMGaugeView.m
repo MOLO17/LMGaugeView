@@ -100,6 +100,12 @@
     _numberFormatter.minimumIntegerDigits = 1;
     _numberFormatter.minimumFractionDigits = 4;
     _numberFormatter.maximumFractionDigits = 4;
+
+    _minMaxumberFormatter = [[NSNumberFormatter alloc] init];
+    _minMaxumberFormatter.alwaysShowsDecimalSeparator = YES;
+    _minMaxumberFormatter.minimumIntegerDigits = 1;
+    _minMaxumberFormatter.minimumFractionDigits = 4;
+    _minMaxumberFormatter.maximumFractionDigits = 4;
     
     // Ring
     _ringThickness = kDefaultRingThickness;
@@ -286,7 +292,7 @@
         self.minValueLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.minValueLabel];
     }
-    self.minValueLabel.text = [NSString stringWithFormat:@"%0.f", self.minValue];
+    self.minValueLabel.text = [self.minMaxumberFormatter stringFromNumber:@(self.minValue)];
     self.minValueLabel.font = self.minMaxValueFont;
     self.minValueLabel.minimumScaleFactor = 10/self.minValueLabel.font.pointSize;
     self.minValueLabel.textColor = self.minMaxValueTextColor;
@@ -305,7 +311,7 @@
         self.maxValueLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.maxValueLabel];
     }
-    self.maxValueLabel.text = [NSString stringWithFormat:@"%0.f", self.maxValue];
+    self.maxValueLabel.text = [self.minMaxumberFormatter stringFromNumber:@(self.maxValue)];
     self.maxValueLabel.font = self.minMaxValueFont;
     self.maxValueLabel.minimumScaleFactor = 10/self.maxValueLabel.font.pointSize;
     self.maxValueLabel.textColor = self.minMaxValueTextColor;
